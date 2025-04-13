@@ -11,7 +11,8 @@ Unified API and style for Python plotting libraries.
 <table style="border-collapse: collapse; border-style: hidden;">
 
 <tr>
-<td> <b>plotly 5</b> </td> <td> <b>matplotlib</b> </td>
+    <td><b>plotly</b></td>
+    <td><b>matplotlib</b></td>
 </tr>
 
 <tr>
@@ -34,6 +35,7 @@ fig.legend().show()
 ```
 
 </td>
+
 <td>
 
 ```python
@@ -58,20 +60,24 @@ fig.legend().show()
 <tr>
 <td>
 
-<img src='gallery/asset/plotly5-example.png' width='380'>
+<picture align="center">
+    <img src="https://media.githubusercontent.com/media/MakarovDi/uplot/refs/heads/main/gallery/asset/plotly5-example.png">
+</picture>
 
 </td>
 
 <td>
 
-<img src='gallery/asset/mpl-example.png' width='380'>
+<picture align="center">
+    <img src="https://media.githubusercontent.com/media/MakarovDi/uplot/refs/heads/main/gallery/asset/mpl-example.png">
+</picture>
 
 </td>
 
 </tr>
 </table>
 
-> :bulb: See [gallery](gallery/gallery.md) for more examples.
+> 💡 See [gallery](https://github.com/makarovdi/uplot/blob/main/gallery/gallery.md) for more examples.
 
 ## Install
 
@@ -88,34 +94,34 @@ If you need only `matplotlib` support:
 ```bash
 pip install "uplot[matplotlib] @ git+https://github.com/makarovdi/uplot.git@main"
 ```
-> :bulb: Replace `[matplotlib]` with `[plotly5]` for plotly-only installation 
+> 💡  Replace `[matplotlib]` with `[plotly5]` for plotly-only installation
 
 
 ## Plotting Libs - Pros & Cons
 
 ### [Matplotlib](https://matplotlib.org/)
 
-:green_circle: Highly configurable.  
-:green_circle: Good documentation and a lot of ready-to-use recipes (e.g. on StackOverflow).  
-:yellow_circle: Common API (MATLAB legacy). 
-  
- 
-:red_circle: Limited interactivity (especially for Jupyter).  
-:red_circle: API, behavior and parameter names are inconsistent (e.g. plt.xlim and axis.set_xlim).  
-:red_circle: Slow and limited 3D rendering.   
+🟢 Highly configurable.  
+🟢 Good documentation and a lot of ready-to-use recipes (e.g. on StackOverflow).  
+🟡 Common API (MATLAB legacy).  
+
+
+🔴 Limited interactivity (especially for Jupyter).  
+🔴 API, behavior and parameter names are inconsistent (e.g. plt.xlim and axis.set_xlim).  
+🔴 Slow and limited 3D rendering.  
 
 
 ### [Plotly](https://plotly.com/python/)
 
-:green_circle: Very good interactivity.  
-:green_circle: Native compatibility with Jupyter.  
-:green_circle: Possibility to save interactive plot (html-file).  
-:green_circle: Fast and interactive 3D plot.  
+🟢 Very good interactivity.  
+🟢 Native compatibility with Jupyter.  
+🟢 Possibility to save interactive plot (html-file).  
+🟢 Fast and interactive 3D plot.  
 
-:red_circle: Not well documented (a lot of parameters, small amount of examples).  
-:red_circle: High memory consumption (limited number of plots in Jupyter).  
-:red_circle: Some expected API functions are missing (e.g. imshow).  
-:red_circle: 3D and 2D axis parameters are not unified (e.g. layout.xaxis doesn't work for 3D).   
+🔴 Not well documented (a lot of parameters, small amount of examples).  
+🔴 High memory consumption (limited number of plots in Jupyter).  
+🔴 Some expected API functions are missing (e.g. imshow).  
+🔴 3D and 2D axis parameters are not unified (e.g. layout.xaxis doesn't work for 3D).  
 
 ## Functions
 
@@ -132,7 +138,7 @@ pip install "uplot[matplotlib] @ git+https://github.com/makarovdi/uplot.git@main
 | `grid(show)`                                                        | Show or hide the grid on the figure.                                                                                                                          |
 | `xlabel(text)` <br/> `ylabel(text)` <br/> `zlabel(text)`            | Set the label for the x, y, z-axis.                                                                                                                           |
 | `xlim(min, max)` <br/> `ylim(min, max)` <br/> `zlim(min, max)`      | Set limits for the x, y, z-axis.                                                                                                                              |
-| `xscale()` <br/> `yscale()`                                         | Set scale for the x, y-axis: 'linear' or 'log'.                                                                                                                              |
+| `xscale()` <br/> `yscale()`                                         | Set scale for the x, y-axis: 'linear' or 'log'.                                                                                                               |
 | `current_color()` <br/> `scroll_color(count)` <br/> `reset_color()` | Get the color which will be used for the next plot. <br/> Scroll a list of predefined colors for plots. <br/> Set the current color to the start of the list. |
 | `axis_aspect(mode)`                                                 | Set the aspect ratio of the axis.                                                                                                                             |
 | `as_image()`                                                        | Get the figure as a NumPy array.                                                                                                                              |
@@ -146,7 +152,7 @@ pip install "uplot[matplotlib] @ git+https://github.com/makarovdi/uplot.git@main
 
 ### Plugin
 
-The plugin system allows extending `uplot` for visualizing custom objects.   
+The plugin system allows extending `uplot` for visualizing custom objects.
 For example, the `DataFrame` plugin enables this code:
 ```python
 import uplot
@@ -160,7 +166,10 @@ fig = uplot.figure()
 fig.plot(car_crashes[['total', 'speeding', 'alcohol', 'no_previous']])
 fig.show()
 ```
-<img src='gallery/asset/plugin.png' width='480'>
+<picture align="left">
+    <img src='https://media.githubusercontent.com/media/MakarovDi/uplot/refs/heads/main/gallery/asset/plugin.png' width='480'>
+</picture>
+
 
 To implement the plugin, you can follow this structure:
 ```python
@@ -184,7 +193,7 @@ class DataFramePlugin(plugin.IPlotPlugin):
 plugin.register(pd.DataFrame, handler=DataFramePlugin())
 ```
 
-> :bulb: Check `test/plugin.py` for a more advanced plugin example. 
+> 💡 Check `test/plugin.py` for a more advanced plugin example.
 
 ### Engine
 
@@ -196,14 +205,14 @@ from uplot import IPlotEngine, IFigure
 class MyEngine(IPlotEngine):
     ...
     def figure(self, ...) -> MyFigure: ...
-    
+
 class MyFigure(IFigure):
     def plot(self, ...): ...
     def scatter(self, ...): ...
     ...
 
 # register the engine
-uplot.engine.register(MyEngine(), name='test') 
+uplot.engine.register(MyEngine(), name='test')
 ```
 Then use it in the regular way:
 ```python
@@ -216,7 +225,7 @@ fig.show()
 
 ## Dependencies
 
-- `Python` ≥ 3.10 
+- `Python` ≥ 3.10
 - `NumPy` ≥ 1.21 `v2.0 supported`
 - `pillow` ≥ 10.3
 
@@ -227,9 +236,9 @@ fig.show()
 
 ## License
 
-This software is licensed under the `BSD-3-Clause` license.  
-See the [LICENSE](LICENSE) file for details.
+This software is licensed under the `BSD-3-Clause` license.
+See the [LICENSE](https://github.com/MakarovDi/uplot/blob/main/LICENSE) file for details.
 
 ## TODO
 
-Check the plan for new features [here](TODO.md).
+Check the plan for new features [here](https://github.com/makarovdi/uplot/blob/develop/TODO.md).
