@@ -1,4 +1,4 @@
-# uplot
+# uplt
 
 [![python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)](https://docs.python.org/3/whatsnew/3.10.html)
 [![license](https://img.shields.io/badge/License-BSD%203--Clause-green)](https://choosealicense.com/licenses/mit/)
@@ -20,12 +20,12 @@ Unified API and style for Python plotting libraries.
 
 ```python
 import numpy as np
-import uplot
+import uplt
 
 x = np.linspace(0, np.pi*4, num=100)
 phi = np.pi/4
 
-fig = uplot.figure('plotly')
+fig = uplt.figure('plotly')
 fig.plot(x, np.sin(x - 0*phi), name='#1')
 fig.plot(x, np.sin(x - 1*phi), name='#2')
 fig.plot(x, np.sin(x - 2*phi), name='#3')
@@ -40,12 +40,12 @@ fig.legend().show()
 
 ```python
 import numpy as np
-import uplot
+import uplt
 
 x = np.linspace(0, np.pi*4, num=100)
 phi = np.pi/4
 
-fig = uplot.figure('matplotlib')
+fig = uplt.figure('matplotlib')
 fig.plot(x, np.sin(x - 0*phi), name='#1')
 fig.plot(x, np.sin(x - 1*phi), name='#2')
 fig.plot(x, np.sin(x - 2*phi), name='#3')
@@ -61,7 +61,7 @@ fig.legend().show()
 <td>
 
 <picture align="center">
-    <img src="https://media.githubusercontent.com/media/MakarovDi/uplot/refs/heads/main/gallery/asset/plotly5-example.png">
+    <img src="https://media.githubusercontent.com/media/MakarovDi/uplt/refs/heads/main/gallery/asset/plotly5-example.png">
 </picture>
 
 </td>
@@ -69,7 +69,7 @@ fig.legend().show()
 <td>
 
 <picture align="center">
-    <img src="https://media.githubusercontent.com/media/MakarovDi/uplot/refs/heads/main/gallery/asset/mpl-example.png">
+    <img src="https://media.githubusercontent.com/media/MakarovDi/uplt/refs/heads/main/gallery/asset/mpl-example.png">
 </picture>
 
 </td>
@@ -77,22 +77,22 @@ fig.legend().show()
 </tr>
 </table>
 
-> 💡 See [gallery](https://github.com/makarovdi/uplot/blob/main/gallery/gallery.md) for more examples.
+> 💡 See [gallery](https://github.com/makarovdi/uplt/blob/main/gallery/gallery.md) for more examples.
 
 ## Install
 
 Recent stable version (without any plotting library):
 ```bash
-pip install "uplot @ git+https://github.com/makarovdi/uplot.git@main"
+pip install "uplt @ git+https://github.com/makarovdi/uplt.git@main"
 ```
 To automatically install all optional dependencies (matplotlib, plotly, ...):
 ```bash
-pip install "uplot[all] @ git+https://github.com/makarovdi/uplot.git@main"
+pip install "uplt[all] @ git+https://github.com/makarovdi/uplt.git@main"
 ```
 
 If you need only `matplotlib` support:
 ```bash
-pip install "uplot[matplotlib] @ git+https://github.com/makarovdi/uplot.git@main"
+pip install "uplt[matplotlib] @ git+https://github.com/makarovdi/uplt.git@main"
 ```
 > 💡  Replace `[matplotlib]` with `[plotly5]` for plotly-only installation
 
@@ -152,22 +152,22 @@ pip install "uplot[matplotlib] @ git+https://github.com/makarovdi/uplot.git@main
 
 ### Plugin
 
-The plugin system allows extending `uplot` for visualizing custom objects.
+The plugin system allows extending `uplt` for visualizing custom objects.
 For example, the `DataFrame` plugin enables this code:
 ```python
-import uplot
+import uplt
 import pandas as pd
 
 car_crashes = pd.read_csv(
     'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/car_crashes.csv'
 )
 
-fig = uplot.figure()
+fig = uplt.figure()
 fig.plot(car_crashes[['total', 'speeding', 'alcohol', 'no_previous']])
 fig.show()
 ```
 <picture align="left">
-    <img src='https://media.githubusercontent.com/media/MakarovDi/uplot/refs/heads/main/gallery/asset/plugin.png' width='480'>
+    <img src='https://media.githubusercontent.com/media/MakarovDi/uplt/refs/heads/main/gallery/asset/plugin.png' width='480'>
 </picture>
 
 
@@ -176,7 +176,7 @@ To implement the plugin, you can follow this structure:
 import numpy as np
 import pandas as pd
 
-import uplot.plugin as plugin
+import uplt.plugin as plugin
 
 
 class DataFramePlugin(plugin.IPlotPlugin):
@@ -199,8 +199,8 @@ plugin.register(pd.DataFrame, handler=DataFramePlugin())
 
 Adding a new plotting library is straightforward. Implement two interfaces `IPlotEngine` and `IFigure`:
 ```python
-import uplot
-from uplot import IPlotEngine, IFigure
+import uplt
+from uplt import IPlotEngine, IFigure
 
 class MyEngine(IPlotEngine):
     ...
@@ -212,13 +212,13 @@ class MyFigure(IFigure):
     ...
 
 # register the engine
-uplot.engine.register(MyEngine(), name='test')
+uplt.engine.register(MyEngine(), name='test')
 ```
 Then use it in the regular way:
 ```python
-import uplot
+import uplt
 
-fig = uplot.figure(engine='test')
+fig = uplt.figure(engine='test')
 fig.plot(...)
 fig.show()
 ```
@@ -237,8 +237,8 @@ fig.show()
 ## License
 
 This software is licensed under the `BSD-3-Clause` license.
-See the [LICENSE](https://github.com/MakarovDi/uplot/blob/main/LICENSE) file for details.
+See the [LICENSE](https://github.com/MakarovDi/uplt/blob/main/LICENSE) file for details.
 
 ## TODO
 
-Check the plan for new features [here](https://github.com/makarovdi/uplot/blob/develop/TODO.md).
+Check the plan for new features [here](https://github.com/makarovdi/uplt/blob/develop/TODO.md).

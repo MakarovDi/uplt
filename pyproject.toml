@@ -1,5 +1,5 @@
 [project]
-name = "uplot"
+name = "uplt"
 description = "Unified API and style for Python plotting libraries"
 version = "0.8.1.dev"
 authors = [
@@ -31,7 +31,7 @@ plotly = [
     'plotly >= 5.16, < 6.0',
     'kaleido',
 ]
-all = [ "uplot[matplot, plotly]" ]
+all = [ "uplt[matplot, plotly]" ]
 
 
 [project.urls]

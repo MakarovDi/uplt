@@ -1,5 +1,5 @@
 from types import GenericAlias
-from uplot.plugin.IPlotPlugin import IPlotPlugin
+from uplt.plugin.IPlotPlugin import IPlotPlugin
 
 
 REGISTERED_TYPES: dict[type | GenericAlias, IPlotPlugin] = {}

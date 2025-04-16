@@ -1,4 +1,4 @@
-from uplot.interface import IPlotEngine
+from uplt.interface import IPlotEngine
 from typing import OrderedDict
 
 

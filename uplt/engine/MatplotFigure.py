@@ -5,14 +5,14 @@ from numpy import ndarray
 from numpy.typing import ArrayLike
 from typing import Any
 
-import uplot.color as ucolor
-import uplot.utool as utool
-import uplot.plugin as plugin
+import uplt.color as ucolor
+import uplt.utool as utool
+import uplt.plugin as plugin
 
-from uplot.interface import IFigure, LineStyle, MarkerStyle, AspectMode, AxisScale, Colormap
-from uplot.engine.MatplotEngine import MatplotEngine
-from uplot.utool import Interpolator
-from uplot.default import DEFAULT
+from uplt.interface import IFigure, LineStyle, MarkerStyle, AspectMode, AxisScale, Colormap
+from uplt.engine.MatplotEngine import MatplotEngine
+from uplt.utool import Interpolator
+from uplt.default import DEFAULT
 
 
 class MatplotFigure(IFigure):
@@ -60,7 +60,7 @@ class MatplotFigure(IFigure):
                    opacity     : float = 1.0,
                    legend_group: str | None = None,
                    **kwargs) -> IFigure:
-        from uplot.engine.matplot.plot import plot_line_marker
+        from uplt.engine.matplot.plot import plot_line_marker
 
         # check if x is a custom object and a plugin is available
         if plugin.plot(plot_method=self.plot,
@@ -103,7 +103,7 @@ class MatplotFigure(IFigure):
                       opacity     : float = 1.0,
                       legend_group: str | None = None,
                       **kwargs) -> IFigure:
-        from uplot.engine.matplot.plot import plot_line_marker
+        from uplt.engine.matplot.plot import plot_line_marker
 
         # check if x is a custom object and a plugin is available
         if plugin.plot(plot_method=self.scatter,

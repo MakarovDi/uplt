@@ -1,5 +1,5 @@
 import importlib.util
-from uplot.interface import IPlotEngine, IFigure
+from uplt.interface import IPlotEngine, IFigure
 
 
 class MatplotEngine(IPlotEngine):
@@ -55,7 +55,7 @@ class MatplotEngine(IPlotEngine):
         self._backend = backend
 
     def figure(self, width: int, aspect_ratio: float) -> IFigure:
-        from uplot.engine.MatplotFigure import MatplotFigure
+        from uplt.engine.MatplotFigure import MatplotFigure
 
         # use style and backend for our figure only
         # avoid to change global state of matplotlib

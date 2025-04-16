@@ -1,6 +1,6 @@
-from uplot.interface import IFigure, IPlotEngine
-from uplot import engine as uengine
-from uplot.default import DEFAULT
+import uplt.engine as uengine
+from uplt.interface import IFigure, IPlotEngine
+from uplt.default import DEFAULT
 
 # cache variable to store last used engine
 CURRENT_ENGINE: IPlotEngine | None = None

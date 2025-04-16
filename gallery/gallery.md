@@ -13,7 +13,7 @@
 
 ```python
 import numpy as np
-import uplot
+import uplt
 
 # data
 x = np.linspace(0, np.pi*4, num=100)
@@ -23,7 +23,7 @@ y3 = np.sin(x + 2*np.pi/4)
 y4 = np.sin(x + 3*np.pi/4)
 
 # plot
-fig = uplot.figure(engine='plotly5')
+fig = uplt.figure(engine='plotly5')
 fig.plot(x, y1, name='data #1')
 fig.plot(x, y2, name='data #2')
 fig.plot(x, y3, name='data #3')
@@ -38,13 +38,13 @@ fig.show()
 
 ```python
 import numpy as np
-import uplot
+import uplt
 
 x = np.linspace(0, np.pi*4, num=100)
 y1 = np.sin(x)
 y2 = np.sin(x - np.pi/4)
 
-fig = uplot.figure(engine='plotly5')
+fig = uplt.figure(engine='plotly5')
 fig.plot(x=y1, y=y2, z=x, name='data #1')
 fig.plot(x=y1, y=y2, z=x+2, name='data #2')
 fig.plot(x=y1, y=y2, z=x+4, name='data #1')
@@ -60,7 +60,7 @@ fig.show()
 
 ```python
 import numpy as np
-import uplot
+import uplt
 
 # data
 x = np.random.uniform(size=100)
@@ -69,7 +69,7 @@ y = np.random.uniform(size=100)
 rgb_colors = np.random.uniform(low=0.3, high=0.8, size=[100, 3])
 
 # plot
-fig = uplot.figure(engine='plotly5')
+fig = uplt.figure(engine='plotly5')
 fig.scatter(x, y)
 fig.show()
 ```
@@ -81,9 +81,9 @@ fig.show()
 
 ```python
 import numpy as np
-import uplot
+import uplt
 
-fig = uplot.figure('mpl')
+fig = uplt.figure('mpl')
 fig.plot(x, y, name='cos')
 
 fig.hline(y=0.5, x_min=10, x_max=15, line_style='--')
@@ -103,7 +103,7 @@ fig.show()
 
 ```python
 import numpy as np
-import uplot
+import uplt
 
 z = np.linspace(0, np.pi*4, num=100)
 x = np.sin(z)
@@ -111,8 +111,8 @@ y = np.sin(z - np.pi/4)
 
 rgb_colors = np.random.uniform(low=0.1, high=0.9, size=[100, 3])
 
-fig = uplot.figure(engine='plotly5')
-fig.scatter(x, y, z, color=uplot.color.rgb_to_str(rgb_colors))
+fig = uplt.figure(engine='plotly5')
+fig.scatter(x, y, z, color=uplt.color.rgb_to_str(rgb_colors))
 fig.show()
 ```
 
@@ -126,7 +126,7 @@ y1 = np.arange(5) + 1
 y2 = y1[::-1]
 x = [ 'A', 'B', 'C', 'AABB', 'D' ]
 
-fig = uplot.figure(engine)
+fig = uplt.figure(engine)
 fig.bar(x, y1, name='T1')
 fig.bar(x, y2, name='T2')
 fig.bar(x, [1, 1, 1, 1, 1], opacity=0.5, name='T3')
@@ -146,7 +146,7 @@ y = np.arange(-5, 5, 0.25)
 X, Y = np.meshgrid(x, y)
 Z = np.sin(np.sqrt(X**2 + Y**2))
 
-fig = uplot.figure('plotly', aspect_ratio=0.8)
+fig = uplt.figure('plotly', aspect_ratio=0.8)
 fig.surface3d(x, y, Z,   name='data #1', colormap='blues')
 fig.surface3d(x, y, Z*6, name='data #2', show_colormap=True)
 fig.xlabel('X Axis')
@@ -164,7 +164,7 @@ fig.show()
 x = np.linspace(0, 100000, num=1000)
 y = np.sqrt(x)
 
-fig = uplot.figure(engine)
+fig = uplt.figure(engine)
 fig.plot(x, y, name='sqrt(x)')
 fig.xscale('log', base=10)
 fig.yscale('log', base=10)
@@ -185,7 +185,7 @@ fig.show()
 x = np.arange(8)
 y = np.arange(8)
 
-fig = uplot.figure('plotly')
+fig = uplt.figure('plotly')
 fig.scatter(x, y, marker_style='.', marker_size=1, name='data #1', legend_group='Small')
 fig.scatter(x, y+1, marker_style='s', marker_size=6, name='data #2', legend_group='Small')
 fig.scatter(x, y-1, marker_style='v', marker_size=10, name='data #3', legend_group='Small')
@@ -202,7 +202,7 @@ fig.show()
 `DataFrame` plugin:
 ```python
 import pandas as pd
-import uplot.plugin as plugin
+import uplt.plugin as plugin
 
 
 class DataFramePlugin(plugin.IPlotPlugin):
@@ -231,7 +231,7 @@ car_crashes = pd.read_csv(
     'https://raw.githubusercontent.com/mwaskom/seaborn-data/master/car_crashes.csv'
 )
 
-fig = uplot.figure()
+fig = uplt.figure()
 fig.plot(car_crashes[['total', 'speeding', 'alcohol', 'no_previous']])
 fig.show()
 ```

@@ -1,6 +1,6 @@
-from uplot.engine.MatplotEngine import MatplotEngine
-from uplot.engine.PlotlyEngine5 import PlotlyEngine5
-from uplot.engine.manage import register, get, available
+from uplt.engine.MatplotEngine import MatplotEngine
+from uplt.engine.PlotlyEngine5 import PlotlyEngine5
+from uplt.engine.manage import register, get, available
 
 
 __all__ = [

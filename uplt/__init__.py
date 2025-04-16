@@ -1,22 +1,22 @@
 from importlib.metadata import metadata
 
 # engine managing
-import uplot.engine as engine
+import uplt.engine as engine
 
 # interface
-from uplot.interface import IFigure, IPlotEngine
+from uplt.interface import IFigure, IPlotEngine
 
 # main API function
-from uplot.plot import figure
+from uplt.plot import figure
 
 # common routines
-import uplot.color as color
+import uplt.color as color
 
 # common types
-from uplot.utype import LineStyle, MarkerStyle, AspectMode, AxisScale, Colormap
+from uplt.utype import LineStyle, MarkerStyle, AspectMode, AxisScale, Colormap
 
 # settings
-from uplot.default import DEFAULT
+from uplt.default import DEFAULT
 
 # query the package metadata
 meta = metadata(__name__)

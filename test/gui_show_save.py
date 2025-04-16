@@ -1,4 +1,4 @@
-import uplot
+import uplt
 import imageio.v3 as iio
 
 ## Run Mode
@@ -15,7 +15,7 @@ y2 = [4, 3, 2, 1]
 
 ## Fig 1
 
-f1 = uplot.figure(engine=engine)
+f1 = uplt.figure(engine=engine)
 f1.plot(x, y1)
 f1.plot(x, y2, line_style=':', color='gray')
 f1.scatter(3, 5, name='The lonely dot')
@@ -33,7 +33,7 @@ else:
 
 ## Fig 2
 
-f2 = uplot.figure(engine=engine, aspect_ratio=0.4)
+f2 = uplt.figure(engine=engine, aspect_ratio=0.4)
 f2.plot(y1, x, name='#1', line_style='--')
 f2.plot(y2, x)
 f2.title('Test')

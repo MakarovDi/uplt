@@ -4,7 +4,7 @@ from typing import cast, get_args
 from types import GenericAlias
 from numpy.typing import ArrayLike
 
-import uplot.plugin as plugin
+import uplt.plugin as plugin
 
 
 class PlotData(NamedTuple):
@@ -102,7 +102,7 @@ def plot(plot_method: Callable,
     x_type = get_type(x)
     if y is not None or z is not None:
         return False
-    
+
     if not plugin.is_registered(x_type):
         return False
 

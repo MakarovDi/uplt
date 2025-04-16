@@ -1,9 +1,9 @@
-import uplot
+import uplt
 
 import numpy as np
 import pandas as pd
 
-import uplot.plugin as plugin
+import uplt.plugin as plugin
 
 
 class DataFramePlugin(plugin.IPlotPlugin):
@@ -14,7 +14,7 @@ class DataFramePlugin(plugin.IPlotPlugin):
     def extract_data(self, obj: pd.DataFrame) -> list[plugin.PlotData]:
         data = []
         for name in obj.columns:
-            if not np.issubdtype(obj.dtypes[name], np.number): 
+            if not np.issubdtype(obj.dtypes[name], np.number):
                 continue
             y = np.asarray(obj[name].values)
             x = np.arange(len(y))
@@ -37,7 +37,7 @@ class DataFramePluginAdvanced(plugin.IPlotPlugin):
         data = []
         joined_name = []
         for name in obj.columns:
-            if not np.issubdtype(obj.dtypes[name], np.number): 
+            if not np.issubdtype(obj.dtypes[name], np.number):
                 continue
             y = np.asarray(obj[name].values)
             x = np.arange(len(y))
@@ -83,7 +83,7 @@ plugin.register(pd.DataFrame, handler=DataFramePluginAdvanced())
 car_crashes = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/car_crashes.csv')
 
 
-fig = uplot.figure('mpl')
+fig = uplt.figure('mpl')
 # fig = uplot.figure('plotly')
 
 # regular plot

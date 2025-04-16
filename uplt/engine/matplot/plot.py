@@ -1,10 +1,10 @@
 import numpy as np
 from numpy.typing import ArrayLike
 
-import uplot.color as ucolor
+import uplt.color as ucolor
 
-from uplot.interface import LineStyle, MarkerStyle
-from uplot.default import DEFAULT
+from uplt.interface import LineStyle, MarkerStyle
+from uplt.default import DEFAULT
 
 
 def plot_line_marker(axis,

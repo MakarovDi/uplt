@@ -1,7 +1,7 @@
 import numpy as np
 from typing import Literal
 
-from uplot.engine.plotly.scale import get_scale
+from uplt.engine.plotly.scale import get_scale
 
 
 def estimate_axis_range(figure,

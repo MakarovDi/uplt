@@ -1,7 +1,7 @@
 import numpy as np
 from typing import Literal, cast
 
-from uplot.interface import AxisScale
+from uplt.interface import AxisScale
 
 
 def get_scale(figure, axis: Literal['x', 'y', 'z']) -> AxisScale:
