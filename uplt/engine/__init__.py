@@ -25,11 +25,13 @@ if MatplotEngine.is_available():
     # matplotlib GUI
     mpl_gui = MatplotEngine()
     register(engine=mpl_gui, name='matplotlib')
+    register(engine=mpl_gui, name='matplot')
     register(engine=mpl_gui, name='mpl')
 
     # matplotlib without GUI (save to file only)
     mpl_no_gui = MatplotEngine(backend='agg')
     register(mpl_no_gui, name='matplotlib-nogui')
+    register(mpl_no_gui, name='matplot-nogui')
     register(mpl_no_gui, name='mpl-nogui')
     register(mpl_no_gui, name='mpl-ng')
     register(mpl_no_gui, name='mpl-io')
