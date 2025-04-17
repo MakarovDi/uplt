@@ -43,3 +43,7 @@ Changelog = "https://github.com/makarovdi/uplot/blob/main/CHANGELOG.md"
 [build-system]
 requires = ["hatchling >= 1.26"]
 build-backend = "hatchling.build"
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["uplt", "uplot"]
