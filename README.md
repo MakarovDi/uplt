@@ -45,7 +45,7 @@ import uplt
 x = np.linspace(0, np.pi*4, num=100)
 phi = np.pi/4
 
-fig = uplt.figure('matplotlib')
+fig = uplt.figure('matplot')
 fig.plot(x, np.sin(x - 0*phi), name='#1')
 fig.plot(x, np.sin(x - 1*phi), name='#2')
 fig.plot(x, np.sin(x - 2*phi), name='#3')
@@ -77,24 +77,26 @@ fig.legend().show()
 </tr>
 </table>
 
-> 💡 See [gallery](https://github.com/makarovdi/uplt/blob/main/gallery/gallery.md) for more examples.
+> 💡 See [gallery](https://github.com/makarovdi/uplt/blob/main/gallery/gallery.md) for more examples.  
+
+> 💡 The `uplot` alias is available and can be used interchangeably with `uplt`.
 
 ## Install
 
 Recent stable version (without any plotting library):
 ```bash
-pip install "uplt @ git+https://github.com/makarovdi/uplt.git@main"
+pip install uplt-py
 ```
 To automatically install all optional dependencies (matplotlib, plotly, ...):
 ```bash
-pip install "uplt[all] @ git+https://github.com/makarovdi/uplt.git@main"
+pip install "uplt-py[all]"
 ```
 
 If you need only `matplotlib` support:
 ```bash
-pip install "uplt[matplotlib] @ git+https://github.com/makarovdi/uplt.git@main"
+pip install "uplt-py[matplot]"
 ```
-> 💡  Replace `[matplotlib]` with `[plotly5]` for plotly-only installation
+> 💡  Replace `[matplot]` with `[plotly]` for plotly-only installation
 
 
 ## Plotting Libs - Pros & Cons
@@ -167,7 +169,7 @@ fig.plot(car_crashes[['total', 'speeding', 'alcohol', 'no_previous']])
 fig.show()
 ```
 <picture align="left">
-    <img src='https://media.githubusercontent.com/media/MakarovDi/uplt/refs/heads/main/gallery/asset/plugin.png' width='480'>
+    <img src='https://media.githubusercontent.com/media/makarovdi/uplt/refs/heads/main/gallery/asset/plugin.png' width='480'>
 </picture>
 
 
@@ -237,7 +239,7 @@ fig.show()
 ## License
 
 This software is licensed under the `BSD-3-Clause` license.
-See the [LICENSE](https://github.com/MakarovDi/uplt/blob/main/LICENSE) file for details.
+See the [LICENSE](https://github.com/makarovdi/uplt/blob/main/LICENSE) file for details.
 
 ## TODO
 
