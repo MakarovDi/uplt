@@ -19,7 +19,7 @@ from uplt.utype import LineStyle, MarkerStyle, AspectMode, AxisScale, Colormap
 from uplt.default import DEFAULT
 
 # query the package metadata
-meta = metadata(__name__)
+meta = metadata('uplt-py')
 
 __author__ = meta['Author-email']
 __email__ = meta['Author-email']

@@ -1,5 +1,5 @@
 [project]
-name = "uplt"
+name = "uplt-py"
 description = "Unified API and style for Python plotting libraries"
 version = "0.8.1.dev"
 authors = [
@@ -31,13 +31,13 @@ plotly = [
     'plotly >= 5.16, < 6.0',
     'kaleido',
 ]
-all = [ "uplt[matplot, plotly]" ]
+all = [ "uplt-py[matplot, plotly]" ]
 
 
 [project.urls]
-Repository = "https://github.com/makarovdi/uplot"
-Issues = "https://github.com/makarovdi/uplot/issues"
-Changelog = "https://github.com/makarovdi/uplot/blob/main/CHANGELOG.md"
+Repository = "https://github.com/makarovdi/uplt"
+Issues = "https://github.com/makarovdi/uplt/issues"
+Changelog = "https://github.com/makarovdi/uplt/blob/main/CHANGELOG.md"
 
 
 [build-system]
