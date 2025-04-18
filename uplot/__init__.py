@@ -1,49 +1,11 @@
-from uplot.info import __version__, __author__, __email__  # noqa: F401
+import sys
 
-# engine managing
-import uplot.engine as engine
+# import the actual implementation package
+import uplt
 
-# interface
-from uplot.interface import IFigure, IPlotEngine
+# import everything is do nothing really
+# only for static type checkers and analysis tools
+from uplt import * # type: ignore # noqa: F403
 
-# main API function
-from uplot.plot import figure
-
-# common routines
-import uplot.color as color
-
-# common types
-from uplot.utype import LineStyle, MarkerStyle, AspectMode, AxisScale, Colormap
-
-# settings
-from uplot.default import DEFAULT
-
-
-__all__ = [
-    
-    # modules
-
-    'engine',
-    'color',
-
-    # interface
-
-    'IFigure', 
-    'IPlotEngine',
-    
-    # functions
-    
-    'figure',
-
-    # types
-   
-    'LineStyle', 
-    'MarkerStyle', 
-    'AspectMode',
-    'AxisScale', 
-    'Colormap',
-
-    # variables / constants
-
-    'DEFAULT'
-]
+# make 'uplot' a true alias for 'uplt' in the module cache
+sys.modules['uplot'] = uplt

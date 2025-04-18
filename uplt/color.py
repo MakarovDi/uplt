@@ -85,12 +85,12 @@ def rgb_to_str(rgb: list | np.ndarray) -> str | list[str]:
         Hex color string or array of strings.
     """
     rgb = np.asarray(rgb)
-    rgb = np.atleast_2d(rgb)
     assert rgb.shape[-1] == 3, 'Input must be an Nx3 array or list'
     assert rgb.max() <= 1.0, 'RGB value range must be [0, 1]'
 
     rgb255 = (rgb*255).astype(np.uint8)
-    rgb_str = [ f'#{rgb[0]:02x}{rgb[1]:02x}{rgb[2]:02x}' for rgb in rgb255 ]
+    rgb255 = np.atleast_2d(rgb255)
+    rgb_str = [ f'#{r:02x}{g:02x}{b:02x}' for r, g, b in rgb255 ]
 
     if len(rgb) == 1:
         return rgb_str[0]  # single RGB value

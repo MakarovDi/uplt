@@ -2,7 +2,8 @@
 
 ## Next Release
 
-- [x] **API**: switching log vs normal scale: `xscale()`, `yscale()`
+- [ ] **API**: plot_range(x, y_up, y_down, ...)
+- [ ] update to `plotly 6`
 
 ## Backlog
 - [ ] **API**: `line_width` parameter for `fig.plot(...)`
@@ -19,6 +20,7 @@
 
 ## Done
 
+- [x] **API**: switching log vs normal scale: `xscale()`, `yscale()`
 - [x] `README` API description: supported functions per engine
 - [x] **API**: `fig.bar(...)`
 - [x] **API**: `fig.hline()` and `fig.vline()`

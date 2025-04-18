@@ -1,4 +1,4 @@
-from uplot.interface import LineStyle, MarkerStyle
+from uplt.interface import LineStyle, MarkerStyle
 from typing import Literal
 
 

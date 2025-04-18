@@ -1,5 +1,14 @@
 # Changelog
 
+## `[v0.8.2]` - 18.04.2025
+
+#### New
+* `[engine]` add `matplot` alias for matplotlib engine.
+* `uplot` and `uplt` are now aliases for the same package.
+
+#### Changed
+* change name `uplot` to available `uplt` for the package publishing.
+
 
 ## `[v0.8.1]` - 23.02.2025
 

@@ -1,0 +1,49 @@
+[project]
+name = "uplt-py"
+description = "Unified API and style for Python plotting libraries"
+version = "0.8.2"
+authors = [
+    { name = "Dmitry Makarov", email="makarovdmv@gmail.com" },
+]
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Visualization",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "numpy   >= 1.21, < 3.0",    # 1.21: ArrayLike and extended annotations: https://numpy.org/devdocs/reference/typing.html
+    "pillow  >= 10.3.0, < 11.0", # versions < 10.3 are vulnerable: https://security.snyk.io/package/pip/pillow
+    "scipy   >= 1.11, < 2.0",
+]
+
+
+[project.optional-dependencies]
+matplot = [
+    "matplotlib >= 3.7, < 4.0"
+]
+plotly = [
+    'plotly >= 5.16, < 6.0',
+    'kaleido',
+]
+all = [ "uplt-py[matplot, plotly]" ]
+
+
+[project.urls]
+Repository = "https://github.com/makarovdi/uplt"
+Issues = "https://github.com/makarovdi/uplt/issues"
+Changelog = "https://github.com/makarovdi/uplt/blob/main/CHANGELOG.md"
+
+
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["uplt", "uplot"]

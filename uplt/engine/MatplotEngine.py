@@ -1,13 +1,8 @@
 import importlib.util
-from uplot.interface import IPlotEngine, IFigure
+from uplt.interface import IPlotEngine, IFigure
 
 
 class MatplotEngine(IPlotEngine):
-    # engine specific default parameters
-    SHOWING_DPI = 100
-    SAVING_DPI = SHOWING_DPI * 2
-    LEGEND_MARKER_SIZE = 8
-
     # automatically (default) chosen matplotlib backend
     AUTOMATIC_MPL_BACKEND: str | None = None
 
@@ -55,12 +50,12 @@ class MatplotEngine(IPlotEngine):
         self._backend = backend
 
     def figure(self, width: int, aspect_ratio: float) -> IFigure:
-        from uplot.engine.MatplotFigure import MatplotFigure
+        from uplt.engine.MatplotFigure import MatplotFigure
 
         # use style and backend for our figure only
         # avoid to change global state of matplotlib
         current_backend = self._mpl.get_backend()
         self._mpl.use(backend=self._backend)
-        fig = MatplotFigure(self, width=width, aspect_ratio=aspect_ratio)
+        fig = MatplotFigure(self, width=width, aspect_ratio=aspect_ratio) # type: ignore
         self._mpl.use(backend=current_backend)
         return fig

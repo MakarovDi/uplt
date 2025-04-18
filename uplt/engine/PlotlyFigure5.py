@@ -4,38 +4,39 @@ import numpy as np
 from numpy import ndarray
 from numpy.typing import ArrayLike
 
-import uplot.color as ucolor
-import uplot.utool as utool
-import uplot.plugin as plugin
+import uplt.color as ucolor
+import uplt.utool as utool
+import uplt.plugin as plugin
 
-from uplot.interface import IFigure
-from uplot.interface import LineStyle, MarkerStyle, AspectMode, AxisScale, Colormap
-from uplot.engine.PlotlyEngine5 import PlotlyEngine5
-from uplot.utool import Interpolator
+from uplt.interface import IFigure
+from uplt.interface import LineStyle, MarkerStyle, AspectMode, AxisScale, Colormap
+from uplt.engine.PlotlyEngine5 import PlotlyEngine5
+from uplt.utool import Interpolator
 
 
 class PlotlyFigure5(IFigure):
+    # defaults
+    FILE_RESOLUTION_SCALE = 2
+    LINE_WIDTH = 2.5
 
     @property
     def engine(self) -> PlotlyEngine5:
         return self._engine
 
     @property
-    def internal(self):
+    def internal(self) -> object | None:
         return self._fig
 
     @property
-    def is_3d(self) -> bool | None:
+    def is_3d(self) -> bool:
         return self._is_3d
 
     def __init__(self, engine: PlotlyEngine5):
-        from plotly.graph_objs import Figure
-
         self._engine = engine
         self._color_scroller = ucolor.ColorScroller()
 
-        self._fig: Figure = engine.go.Figure()
-        self._is_3d = None
+        self._fig = engine.go.Figure()
+        self._is_3d = False
         self._colorbar_x_pos = 1.0
         self._show_grid = True
 
@@ -53,7 +54,7 @@ class PlotlyFigure5(IFigure):
                    opacity     : float = 1.0,
                    legend_group: str | None = None,
                    **kwargs) -> IFigure:
-        from uplot.engine.plotly.plot import plot_line_marker
+        from uplt.engine.plotly.plot import plot_line_marker
 
         # check if x is a custom object and a plugin is available
         if plugin.plot(plot_method=self.plot,
@@ -80,7 +81,7 @@ class PlotlyFigure5(IFigure):
                          color=color,
                          name=name,
                          line_style=line_style,
-                         line_width=self.engine.LINE_WIDTH,
+                         line_width=self.LINE_WIDTH,
                          marker_style=marker_style,
                          marker_size=marker_size,
                          opacity=opacity,
@@ -99,7 +100,7 @@ class PlotlyFigure5(IFigure):
                       opacity     : float = 1.0,
                       legend_group: str | None = None,
                       **kwargs) -> IFigure:
-        from uplot.engine.plotly.plot import plot_line_marker
+        from uplt.engine.plotly.plot import plot_line_marker
 
         # check if x is a custom object and a plugin is available
         if plugin.plot(plot_method=self.scatter,
@@ -125,7 +126,7 @@ class PlotlyFigure5(IFigure):
                          color=color,
                          name=name,
                          line_style=' ', # no line (scatter mode)
-                         line_width=self.engine.LINE_WIDTH,
+                         line_width=self.LINE_WIDTH,
                          marker_style=marker_style,
                          marker_size=marker_size,
                          opacity=opacity,
@@ -148,11 +149,11 @@ class PlotlyFigure5(IFigure):
             raise RuntimeError('3D figure is not supported')
 
         if x_min is None:
-            from uplot.engine.plotly.axis_range import estimate_axis_range
+            from uplt.engine.plotly.axis_range import estimate_axis_range
             x_min = estimate_axis_range(self._fig, axis='x', mode='min')
 
         if x_max is None:
-            from uplot.engine.plotly.axis_range import estimate_axis_range
+            from uplt.engine.plotly.axis_range import estimate_axis_range
             x_max = estimate_axis_range(self._fig, axis='x', mode='max')
 
         return self.plot([x_min, x_max], [y, y],
@@ -176,11 +177,11 @@ class PlotlyFigure5(IFigure):
             raise RuntimeError('3D figure is not supported')
 
         if y_min is None:
-            from uplot.engine.plotly.axis_range import estimate_axis_range
+            from uplt.engine.plotly.axis_range import estimate_axis_range
             y_min = estimate_axis_range(self._fig, axis='y', mode='min')
 
         if y_max is None:
-            from uplot.engine.plotly.axis_range import estimate_axis_range
+            from uplt.engine.plotly.axis_range import estimate_axis_range
             y_max = estimate_axis_range(self._fig, axis='y', mode='max')
 
         return self.plot([x, x], [y_min, y_max],
@@ -338,7 +339,7 @@ class PlotlyFigure5(IFigure):
         return self
 
     def grid(self, show: bool = True) -> IFigure:
-        from uplot.engine.plotly.scale import get_scale
+        from uplt.engine.plotly.scale import get_scale
 
         show_minor_x = show and get_scale(self._fig, 'x') == 'log'
         show_minor_y = show and get_scale(self._fig, 'y') == 'log'
@@ -381,8 +382,8 @@ class PlotlyFigure5(IFigure):
 
     def xlim(self, min_value: float | None = None,
                    max_value: float | None = None) -> IFigure:
-        from uplot.engine.plotly.axis_range import estimate_axis_range
-        from uplot.engine.plotly.scale import get_scale
+        from uplt.engine.plotly.axis_range import estimate_axis_range
+        from uplt.engine.plotly.scale import get_scale
 
         if min_value is None:
             min_value = estimate_axis_range(self._fig, axis='x', mode='min')
@@ -404,8 +405,8 @@ class PlotlyFigure5(IFigure):
 
     def ylim(self, min_value: float | None = None,
                    max_value: float | None = None) -> IFigure:
-        from uplot.engine.plotly.axis_range import estimate_axis_range
-        from uplot.engine.plotly.scale import get_scale
+        from uplt.engine.plotly.axis_range import estimate_axis_range
+        from uplt.engine.plotly.scale import get_scale
 
         if min_value is None:
             min_value = estimate_axis_range(self._fig, axis='y', mode='min')
@@ -431,25 +432,25 @@ class PlotlyFigure5(IFigure):
             return self
 
         if min_value is None:
-            from uplot.engine.plotly.axis_range import estimate_axis_range
+            from uplt.engine.plotly.axis_range import estimate_axis_range
             min_value = estimate_axis_range(self._fig, axis='z', mode='min')
 
         if max_value is None:
-            from uplot.engine.plotly.axis_range import estimate_axis_range
+            from uplt.engine.plotly.axis_range import estimate_axis_range
             max_value = estimate_axis_range(self._fig, axis='z', mode='max')
 
         self._fig.update_layout(scene=dict(zaxis=dict(range=[min_value, max_value])))
         return self
 
     def xscale(self, scale: AxisScale, base: float = 10) -> IFigure:
-        from uplot.engine.plotly.scale import set_scale
+        from uplt.engine.plotly.scale import set_scale
 
         set_scale(self._fig, 'x', scale=scale, base=base)
         self.grid(self._show_grid) # update grid if visible
         return self
 
     def yscale(self, scale: AxisScale, base: float = 10) -> IFigure:
-        from uplot.engine.plotly.scale import set_scale
+        from uplt.engine.plotly.scale import set_scale
 
         set_scale(self._fig, 'y', scale=scale, base=base)
         self.grid(self._show_grid) # update grid if visible
@@ -479,7 +480,7 @@ class PlotlyFigure5(IFigure):
         from PIL import Image
 
         fig_bytes = io.BytesIO(
-            self._fig.to_image(format='png', scale=self.engine.FILE_RESOLUTION_SCALE)
+            self._fig.to_image(format='png', scale=self.FILE_RESOLUTION_SCALE)
         )
 
         image = Image.open(fig_bytes)

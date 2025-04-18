@@ -1,5 +1,5 @@
-import uplot
-import uplot.plugin as plugin
+import uplt
+import uplt.plugin as plugin
 
 from dataclasses import dataclass
 
@@ -34,7 +34,7 @@ data_tuple = (
 plugin.register(list[CustomObj], handler=CustomObjPlugin())
 plugin.register(tuple[CustomObj, ...], handler=CustomObjPlugin())
 
-fig = uplot.figure('mpl')
+fig = uplt.figure('mpl')
 # fig = uplot.figure('plotly')
 
 # regular plot
