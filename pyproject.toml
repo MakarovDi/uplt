@@ -1,7 +1,7 @@
 [project]
 name = "uplt-py"
 description = "Unified API and style for Python plotting libraries"
-version = "0.8.1.dev"
+version = "0.8.2"
 authors = [
     { name = "Dmitry Makarov", email="makarovdmv@gmail.com" },
 ]
