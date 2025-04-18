@@ -1,4 +1,8 @@
-# uplt
+<h1 align="center">
+    <img src="https://media.githubusercontent.com/media/makarovdi/uplt/refs/heads/develop/logo.png", width=200>
+</h1>
+
+<br>
 
 [![python](https://img.shields.io/badge/Python-3.10-blue?logo=python&logoColor=white)](https://docs.python.org/3/whatsnew/3.10.html)
 [![license](https://img.shields.io/badge/License-BSD%203--Clause-green)](https://choosealicense.com/licenses/mit/)
@@ -61,7 +65,7 @@ fig.legend().show()
 <td>
 
 <picture align="center">
-    <img src="https://media.githubusercontent.com/media/MakarovDi/uplt/refs/heads/main/gallery/asset/plotly5-example.png">
+    <img src="https://media.githubusercontent.com/media/makarovdi/uplt/refs/heads/main/gallery/asset/plotly5-example.png">
 </picture>
 
 </td>
@@ -69,7 +73,7 @@ fig.legend().show()
 <td>
 
 <picture align="center">
-    <img src="https://media.githubusercontent.com/media/MakarovDi/uplt/refs/heads/main/gallery/asset/mpl-example.png">
+    <img src="https://media.githubusercontent.com/media/makarovdi/uplt/refs/heads/main/gallery/asset/mpl-example.png">
 </picture>
 
 </td>
