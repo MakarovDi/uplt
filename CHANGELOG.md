@@ -1,5 +1,11 @@
 # Changelog
 
+## `[v0.8.3]` - 18.04.2025
+
+#### Changed
+* `[interface]` update type for `IFigure.internal` to `Any | None`.
+
+
 ## `[v0.8.2]` - 18.04.2025
 
 #### New
