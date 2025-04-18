@@ -42,6 +42,7 @@ class PlotlyEngine5(IPlotEngine):
         fig = PlotlyFigure5(engine=self) # type: ignore
 
         # adjust style layout
+        assert fig.internal is not None
         fig.internal.update_layout(template=self._layout_style,
                                    width=width,
                                    height=aspect_ratio*width)
