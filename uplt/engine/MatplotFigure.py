@@ -26,7 +26,7 @@ class MatplotFigure(IFigure):
         return self._engine
 
     @property
-    def internal(self) -> object | None:
+    def internal(self) -> Any | None:
         return self._fig
 
     @property

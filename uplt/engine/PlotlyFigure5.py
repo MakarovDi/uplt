@@ -3,6 +3,7 @@ from __future__ import annotations
 import numpy as np
 from numpy import ndarray
 from numpy.typing import ArrayLike
+from typing import Any
 
 import uplt.color as ucolor
 import uplt.utool as utool
@@ -24,7 +25,7 @@ class PlotlyFigure5(IFigure):
         return self._engine
 
     @property
-    def internal(self) -> object | None:
+    def internal(self) -> Any | None:
         return self._fig
 
     @property

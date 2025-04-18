@@ -35,7 +35,7 @@ class IFigure(Protocol):
 
     @property
     @abstract
-    def internal(self):
+    def internal(self) -> Any | None:
         """
         Access the underlying engine-specific figure object.
         Use it if you need richer functionality than uplot can provide.
@@ -44,7 +44,7 @@ class IFigure(Protocol):
         Returns
         -------
         Any
-            An engine-specific figure object.
+            An engine-specific figure object or None if figure is closed.
         """
 
     @property
