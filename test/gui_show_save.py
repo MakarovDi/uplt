@@ -1,5 +1,5 @@
 import uplt
-import imageio.v3 as iio
+import imageio.v3 as iio # type: ignore
 
 ## Run Mode
 

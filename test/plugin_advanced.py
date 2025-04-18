@@ -1,7 +1,7 @@
 import uplt
 
 import numpy as np
-import pandas as pd
+import pandas as pd # type: ignore
 
 import uplt.plugin as plugin
 

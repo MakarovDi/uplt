@@ -16,37 +16,41 @@ from uplt.default import DEFAULT
 
 
 class MatplotFigure(IFigure):
+    # defaults
+    SHOWING_DPI = 100
+    SAVING_DPI = SHOWING_DPI * 2
+    LEGEND_MARKER_SIZE = 8
 
     @property
     def engine(self) -> MatplotEngine:
         return self._engine
 
     @property
-    def internal(self):
+    def internal(self) -> object | None:
         return self._fig
 
     @property
-    def is_3d(self) -> bool | None:
+    def is_3d(self) -> bool:
+        assert self._is_3d is not None, 'axis is not initialized'
         return self._is_3d
 
     def __init__(self, engine: MatplotEngine, width: int, aspect_ratio: float):
-        from matplotlib.figure import Figure
-
         # temporary styling (no global effect):
         # https://matplotlib.org/stable/users/explain/customizing.html
         with engine.plt.style.context(DEFAULT.style):
-            self._fig: Figure | None = engine.plt.figure(dpi=engine.SHOWING_DPI, layout='constrained')
+            self._fig = engine.plt.figure(dpi=self.SHOWING_DPI, layout='constrained')
             # constrained layout automatically adjusts subplots so that decorations like tick labels,
             # legends, and colorbars do not overlap, while still preserving the logical layout requested by the user.
             # constrained layout is similar to Tight layout, but is substantially more flexible.
             # https://matplotlib.org/stable/users/explain/axes/constrainedlayout_guide.html
-            self._fig.set_figwidth(width / engine.SHOWING_DPI)
-            self._fig.set_figheight(aspect_ratio*(width / engine.SHOWING_DPI))
+            self._fig.set_figwidth(width / self.SHOWING_DPI)
+            self._fig.set_figheight(aspect_ratio*(width / self.SHOWING_DPI))
 
         self._engine = engine
         self._color_scroller = ucolor.ColorScroller()
         self._is_3d = None
         self._init_axis(is_3d=False)
+        assert self._axis is not None
         self._bars = [ ]
 
     def plot(self, x           : ArrayLike,
@@ -360,10 +364,10 @@ class MatplotFigure(IFigure):
 
             def updatescatter(handle, orig):
                 handle.update_from(orig)
-                handle.set_sizes([self.engine.LEGEND_MARKER_SIZE ** 2])
+                handle.set_sizes([self.LEGEND_MARKER_SIZE ** 2])
             def updateline(handle, orig):
                 handle.update_from(orig)
-                handle.set_markersize(self.engine.LEGEND_MARKER_SIZE)
+                handle.set_markersize(self.LEGEND_MARKER_SIZE)
 
             handler_map = { PathCollection: HandlerPathCollection(update_func=updatescatter),
                             Line2D: HandlerLine2D(update_func=updateline) }
@@ -458,7 +462,7 @@ class MatplotFigure(IFigure):
 
         fig = self._fig
 
-        fig.set_dpi(self.engine.SAVING_DPI)
+        fig.set_dpi(self.SAVING_DPI)
 
         fig.canvas.draw()
 
@@ -472,7 +476,7 @@ class MatplotFigure(IFigure):
 
     def save(self, filename: str):
         assert self._fig is not None, 'figure is closed'
-        self._fig.savefig(filename, dpi=self.engine.SAVING_DPI)
+        self._fig.savefig(filename, dpi=self.SAVING_DPI)
 
     def close(self):
         self.engine.plt.close(self._fig)

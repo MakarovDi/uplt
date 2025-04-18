@@ -4,9 +4,6 @@ from uplt.default import DEFAULT
 
 
 class PlotlyEngine5(IPlotEngine):
-    # engine specific default parameters
-    FILE_RESOLUTION_SCALE = 2
-    LINE_WIDTH = 2.5
 
     @property
     def name(self) -> str:
@@ -14,7 +11,7 @@ class PlotlyEngine5(IPlotEngine):
 
     @classmethod
     def is_available(cls) -> bool:
-        return importlib.util.find_spec("plotly") is not None
+        return importlib.util.find_spec('plotly') is not None
 
     @property
     def go(self):
@@ -39,10 +36,10 @@ class PlotlyEngine5(IPlotEngine):
         else:
             raise NotImplementedError(f'style not supported for plotly: {DEFAULT.style}')
 
+
     def figure(self, width: int, aspect_ratio: float) -> IFigure:
         from uplt.engine.PlotlyFigure5 import PlotlyFigure5
-
-        fig = PlotlyFigure5(self)
+        fig = PlotlyFigure5(engine=self) # type: ignore
 
         # adjust style layout
         fig.internal.update_layout(template=self._layout_style,

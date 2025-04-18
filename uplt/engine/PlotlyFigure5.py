@@ -15,27 +15,28 @@ from uplt.utool import Interpolator
 
 
 class PlotlyFigure5(IFigure):
+    # defaults
+    FILE_RESOLUTION_SCALE = 2
+    LINE_WIDTH = 2.5
 
     @property
     def engine(self) -> PlotlyEngine5:
         return self._engine
 
     @property
-    def internal(self):
+    def internal(self) -> object | None:
         return self._fig
 
     @property
-    def is_3d(self) -> bool | None:
+    def is_3d(self) -> bool:
         return self._is_3d
 
     def __init__(self, engine: PlotlyEngine5):
-        from plotly.graph_objs import Figure
-
         self._engine = engine
         self._color_scroller = ucolor.ColorScroller()
 
-        self._fig: Figure = engine.go.Figure()
-        self._is_3d = None
+        self._fig = engine.go.Figure()
+        self._is_3d = False
         self._colorbar_x_pos = 1.0
         self._show_grid = True
 
@@ -80,7 +81,7 @@ class PlotlyFigure5(IFigure):
                          color=color,
                          name=name,
                          line_style=line_style,
-                         line_width=self.engine.LINE_WIDTH,
+                         line_width=self.LINE_WIDTH,
                          marker_style=marker_style,
                          marker_size=marker_size,
                          opacity=opacity,
@@ -125,7 +126,7 @@ class PlotlyFigure5(IFigure):
                          color=color,
                          name=name,
                          line_style=' ', # no line (scatter mode)
-                         line_width=self.engine.LINE_WIDTH,
+                         line_width=self.LINE_WIDTH,
                          marker_style=marker_style,
                          marker_size=marker_size,
                          opacity=opacity,
@@ -479,7 +480,7 @@ class PlotlyFigure5(IFigure):
         from PIL import Image
 
         fig_bytes = io.BytesIO(
-            self._fig.to_image(format='png', scale=self.engine.FILE_RESOLUTION_SCALE)
+            self._fig.to_image(format='png', scale=self.FILE_RESOLUTION_SCALE)
         )
 
         image = Image.open(fig_bytes)
