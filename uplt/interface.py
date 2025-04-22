@@ -633,7 +633,7 @@ class IFigure(Protocol):
         """
 
     @abstract
-    def save(self, filename: str):
+    def save(self, filename: str) -> IFigure:
         """
         Save the figure to a file.
 
@@ -641,6 +641,11 @@ class IFigure(Protocol):
         ----------
         filename : str
             The filename for saving the figure.
+
+        Returns
+        -------
+        IFigure
+            The figure object representing the plot.
         """
 
     @abstract

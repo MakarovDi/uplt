@@ -458,12 +458,12 @@ class MatplotFigure(IFigure):
         return self
 
     def as_image(self) -> ndarray:
-        assert self._fig is not None, 'figure is closed'
+        if self._fig is None:
+            raise RuntimeError('figure is closed')
 
         fig = self._fig
 
         fig.set_dpi(self.SAVING_DPI)
-
         fig.canvas.draw()
 
         from matplotlib.backends.backend_agg import FigureCanvasAgg
@@ -474,9 +474,10 @@ class MatplotFigure(IFigure):
         w, h = fig.canvas.get_width_height()
         return image.reshape([h, w, 4])
 
-    def save(self, filename: str):
+    def save(self, filename: str) -> IFigure:
         assert self._fig is not None, 'figure is closed'
         self._fig.savefig(filename, dpi=self.SAVING_DPI)
+        return self
 
     def close(self):
         self.engine.plt.close(self._fig)

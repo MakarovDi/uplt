@@ -489,11 +489,12 @@ class PlotlyFigure5(IFigure):
         image = image[..., :3] # RGBA -> RGB
         return image
 
-    def save(self, filename: str):
+    def save(self, filename: str) -> IFigure:
         if '.html' in filename:
             self._fig.write_html(filename)
         else:
             self._fig.write_image(filename)
+        return self
 
     def close(self):
         self._fig.data = []
