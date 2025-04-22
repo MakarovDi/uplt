@@ -31,7 +31,7 @@ class MatplotFigure(IFigure):
 
     @property
     def is_3d(self) -> bool:
-        assert self._is_3d is not None, 'axis is not initialized'
+        assert self._is_3d is not None, 'axis must be initialized'
         return self._is_3d
 
     def __init__(self, engine: MatplotEngine, width: int, aspect_ratio: float):
@@ -508,7 +508,7 @@ class MatplotFigure(IFigure):
     def _init_axis(self, is_3d: bool):
         assert self._fig is not None, 'figure is closed'
 
-        if self.is_3d == is_3d:
+        if self._is_3d == is_3d:
             # axis already initialized
             return self._axis
 
