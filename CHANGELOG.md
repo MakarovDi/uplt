@@ -1,5 +1,14 @@
 # Changelog
 
+## `[v0.8.4]` - 22.04.2025
+
+#### Changed
+* `[interface]` add return value for `save() -> IFigure`.
+
+#### Fixed
+* `[engine.matplot]` fix regression with `is_3d` flag.
+
+
 ## `[v0.8.3]` - 18.04.2025
 
 #### Changed
